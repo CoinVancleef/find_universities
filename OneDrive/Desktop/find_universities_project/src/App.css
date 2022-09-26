@@ -1,0 +1,61 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Montserrat", sans-serif;
+  font-size: 1rem;
+  color: #404040;
+  line-height: 1.6;
+  background-color: #e8e8e8;
+}
+
+header {
+  display: flex;
+  justify-content: center;
+  background-color: #fbab7e;
+  background-image: linear-gradient(62deg, #fbab7e 0%, #f7ce68 100%);
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+  width: 100%;
+  max-width: 1200px;
+}
+
+header a {
+  text-decoration: none;
+  color: white;
+  font: inherit;
+  padding: 1em 2em;
+  transition: 300ms;
+  font-size: 1.1rem;
+}
+
+header a:active,
+:hover {
+  color: #404040;
+}
+
+.allCountries {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  grid-gap: 1em;
+  justify-items: center;
+  align-items: center;
+  max-width: 1200px;
+}
+
+.country img {
+  width: 200px;
+}
+
+.countriesContainer {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}
