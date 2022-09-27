@@ -11,8 +11,13 @@ export default function Universities(props) {
       .then((res) => res.json())
       .then((data) => setUniData(data));
   }, []);
-  const allUniversities = uniData.map((uni) => {
-    return <University name={uni.name} website={uni.web_pages[0]} />;
-  });
-  return <div className="universitiesPage">{allUniversities}</div>;
+  function allUniversities() {
+    if (uniData.length === 0) {
+      return <University name={"Sorry, no data so far"} />;
+    }
+    return uniData.map((uni) => {
+      return <University name={uni.name} website={uni.web_pages[0]} />;
+    });
+  }
+  return <div className="universitiesPage">{allUniversities()}</div>;
 }
