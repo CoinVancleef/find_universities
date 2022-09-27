@@ -12,9 +12,23 @@ function ContextProvider({ children }) {
       .then((data) => setCountriesData(data));
   }, []);
 
+  const markers = [" of", " (", ","];
+
+  function countryNameModyfier(string) {
+    if (string.includes(markers[1])) {
+      return string.split(markers[1])[0];
+    }
+    if (string.includes(markers[0])) {
+      return string.split(markers[0])[0];
+    }
+    if (string.includes(markers[2])) {
+      return string.split(markers[2])[0];
+    }
+  }
+
   const updated = countriesData.map((country) => {
-    return country.name === "United States of America"
-      ? { ...country, name: "United States" }
+    return country.name.includes(markers[0] || markers[1] || markers[2])
+      ? { ...country, name: countryNameModyfier(country.name) }
       : country;
   });
 
