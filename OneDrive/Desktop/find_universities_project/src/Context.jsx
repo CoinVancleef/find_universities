@@ -10,7 +10,7 @@ function ContextProvider({ children }) {
       .then((res) => res.json())
       .then((data) => setCountriesData(data));
   }, []);
-  console.log(countriesData);
+
   return (
     <Context.Provider value={{ countriesData }}>{children}</Context.Provider>
   );
