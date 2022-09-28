@@ -74,4 +74,17 @@ header a:active,
   background: white;
   padding: 1em;
   border-radius: 0.5em;
+  transition: 250ms;
+  position: relative;
+}
+
+.university:hover {
+  scale: 1.1;
+}
+
+.university img {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  width: 8%;
 }

@@ -5,6 +5,7 @@ const Context = React.createContext();
 function ContextProvider({ children }) {
   const [countriesData, setCountriesData] = useState([]);
   const [updatedCountriesData, setUpdatedCountriesData] = useState([]);
+  const [favoriteUniArray, setFavoriteUniArray] = useState([]);
   const countriesURL = "https://restcountries.com/v2/all?fields=name,flags";
   useEffect(() => {
     fetch(countriesURL)
@@ -36,9 +37,22 @@ function ContextProvider({ children }) {
     setUpdatedCountriesData(updated);
   }, [countriesData]);
 
-  console.log(updatedCountriesData);
+  function addToFavorites(uni) {
+    if (favoriteUniArray.some((item) => item.name === uni.name)) {
+      setFavoriteUniArray((prevUni) =>
+        prevUni.filter((el) => el.name !== uni.name)
+      );
+    } else {
+      setFavoriteUniArray((prevUni) => [...prevUni, uni]);
+    }
+  }
+
+  console.log(favoriteUniArray);
+
   return (
-    <Context.Provider value={{ updatedCountriesData }}>
+    <Context.Provider
+      value={{ updatedCountriesData, addToFavorites, favoriteUniArray }}
+    >
       {children}
     </Context.Provider>
   );
