@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
+import University from "../components/University";
+import { Context } from "../Context";
 
 export default function Favorited() {
-  return (
-    <div>
-      <h1>Favorites go here</h1>
-    </div>
-  );
+  const { favoriteUniArray } = useContext(Context);
+  const favoritedUnis = favoriteUniArray.map((uni) => (
+    <University name={uni.name} website={uni.website} />
+  ));
+  return <div>{favoritedUnis}</div>;
 }
