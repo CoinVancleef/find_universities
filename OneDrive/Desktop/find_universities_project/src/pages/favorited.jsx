@@ -7,5 +7,5 @@ export default function Favorited() {
   const favoritedUnis = favoriteUniArray.map((uni) => (
     <University name={uni.name} website={uni.website} />
   ));
-  return <div>{favoritedUnis}</div>;
+  return <div className="favoritedPage">{favoritedUnis}</div>;
 }
