@@ -29,7 +29,9 @@ export default function University({ name, website }) {
   return (
     <div className="university">
       <h3>{name}</h3>
-      <p>{website}</p>
+      <a href={website} target="_blank">
+        Visit their website!
+      </a>
       {icon()}
     </div>
   );
