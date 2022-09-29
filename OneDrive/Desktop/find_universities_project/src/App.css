@@ -2,6 +2,10 @@
   box-sizing: border-box;
 }
 
+a:link {
+  text-decoration: none;
+}
+
 body {
   margin: 0;
   font-family: "Montserrat", sans-serif;
@@ -42,16 +46,47 @@ header a:active,
 }
 
 .allCountries {
+  margin-top: 1em;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   grid-gap: 1em;
-  justify-items: center;
+  justify-content: center;
   align-items: center;
   max-width: 1200px;
 }
 
+.country {
+  background-color: rgba(255, 255, 255, 0.892);
+  padding: 1em;
+  height: 250px;
+  border-radius: 2em;
+  transition: 250ms;
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border: solid rgba(148, 145, 145, 0.4);
+  border-width: 2px;
+}
+
 .country img {
   width: 200px;
+  height: 120px;
+  margin-bottom: 0;
+}
+
+.country:hover {
+  background-color: rgba(174, 216, 230, 0.7);
+  cursor: pointer;
+}
+
+.country h3 {
+  font-size: 1.2rem;
+  text-decoration: none;
+  color: #404040;
+  text-align: center;
+  margin: 0;
+  padding: 0.5em;
 }
 
 .countriesContainer {
