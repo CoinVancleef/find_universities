@@ -6,7 +6,10 @@ function ContextProvider({ children }) {
   const [countriesData, setCountriesData] = useState([]);
   const [updatedCountriesData, setUpdatedCountriesData] = useState([]);
   const [favoriteUniArray, setFavoriteUniArray] = useState([]);
+  const [countryFormData, setCountryFormData] = useState("");
+  const [searchResults, setSearchResults] = useState([]);
   const countriesURL = "https://restcountries.com/v2/all?fields=name,flags";
+
   useEffect(() => {
     fetch(countriesURL)
       .then((res) => res.json())
@@ -47,11 +50,30 @@ function ContextProvider({ children }) {
     }
   }
 
-  console.log(favoriteUniArray);
+  function handleChange(event) {
+    const { value } = event.target;
+    setCountryFormData(value);
+  }
+
+  useEffect(() => {
+    const results = updatedCountriesData.filter((country) =>
+      country.name.toLowerCase().includes(countryFormData)
+    );
+    setSearchResults(results);
+  }, [countryFormData]);
+
+  console.log(searchResults);
 
   return (
     <Context.Provider
-      value={{ updatedCountriesData, addToFavorites, favoriteUniArray }}
+      value={{
+        updatedCountriesData,
+        addToFavorites,
+        favoriteUniArray,
+        countryFormData,
+        handleChange,
+        searchResults,
+      }}
     >
       {children}
     </Context.Provider>
