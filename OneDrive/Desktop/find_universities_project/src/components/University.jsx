@@ -1,25 +1,32 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import addCircle from "../assets/add_circle.svg";
 import checkCircle from "../assets/check_circle.svg";
+import addCircleFilled from "../assets/add_circle_filled.png";
+import checkCircleFilled from "../assets/check_circle_filled.png";
 import { Context } from "../Context";
 
 export default function University({ name, website }) {
   const { addToFavorites, favoriteUniArray } = useContext(Context);
+  const [hovered, setHovered] = useState(false);
 
   function icon() {
     if (favoriteUniArray.find((uni) => uni.name === name)) {
       return (
         <img
           onClick={() => addToFavorites({ name, website })}
-          src={checkCircle}
-          alt="add circle"
+          onMouseEnter={() => setHovered(true)}
+          onMouseLeave={() => setHovered(false)}
+          src={hovered ? checkCircleFilled : checkCircle}
+          alt="check circle"
         />
       );
     } else {
       return (
         <img
           onClick={() => addToFavorites({ name, website })}
-          src={addCircle}
+          onMouseEnter={() => setHovered(true)}
+          onMouseLeave={() => setHovered(false)}
+          src={hovered ? addCircleFilled : addCircle}
           alt="add circle"
         />
       );
