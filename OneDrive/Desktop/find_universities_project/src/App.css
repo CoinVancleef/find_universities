@@ -169,3 +169,21 @@ input {
 .uniWrapper form input {
   width: 400px;
 }
+
+.fav {
+  position: relative;
+}
+
+.dot {
+  height: 22px;
+  width: 22px;
+  background-color: rgba(255, 0, 60, 0.802);
+  border-radius: 50%;
+  display: inline-block;
+  text-align: center;
+  font-weight: 600;
+  font-size: 0.9rem;
+  position: absolute;
+  top: 17px;
+  right: 17px;
+}
