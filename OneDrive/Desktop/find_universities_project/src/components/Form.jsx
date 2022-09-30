@@ -1,15 +1,13 @@
-import React, { useContext } from "react";
-import { Context } from "../Context";
+import React from "react";
 
-export default function Form({ placeholder }) {
-  const { countryFormData, handleChange } = useContext(Context);
+export default function Form({ placeholder, data, handleChange }) {
   return (
     <form>
       <input
         type="text"
         placeholder={placeholder}
         onChange={handleChange}
-        value={countryFormData}
+        value={data}
       />
     </form>
   );

@@ -7,7 +7,9 @@ function ContextProvider({ children }) {
   const [updatedCountriesData, setUpdatedCountriesData] = useState([]);
   const [favoriteUniArray, setFavoriteUniArray] = useState([]);
   const [countryFormData, setCountryFormData] = useState("");
-  const [searchResults, setSearchResults] = useState([]);
+  const [uniFormData, setUniFormData] = useState([]);
+  const [searchResultsCountry, setSearchResultsCountry] = useState([]);
+  const [searchResultsUni, setSearchResultsUni] = useState([]);
   const countriesURL = "https://restcountries.com/v2/all?fields=name,flags";
 
   useEffect(() => {
@@ -50,19 +52,32 @@ function ContextProvider({ children }) {
     }
   }
 
-  function handleChange(event) {
+  function handleChangeCountry(event) {
     const { value } = event.target;
     setCountryFormData(value);
+  }
+
+  function handleChangeUni(event) {
+    const { value } = event.target;
+    setUniFormData(value);
   }
 
   useEffect(() => {
     const results = updatedCountriesData.filter((country) =>
       country.name.toLowerCase().includes(countryFormData)
     );
-    setSearchResults(results);
+    setSearchResultsCountry(results);
   }, [countryFormData]);
 
-  console.log(searchResults);
+  useEffect(() => {
+    if (uniFormData.length > 2) {
+      fetch(`http://universities.hipolabs.com/search?name=${uniFormData}`)
+        .then((res) => res.json())
+        .then((data) => setSearchResultsUni(data));
+    }
+  }, [uniFormData]);
+
+  console.log(uniFormData);
 
   return (
     <Context.Provider
@@ -71,8 +86,11 @@ function ContextProvider({ children }) {
         addToFavorites,
         favoriteUniArray,
         countryFormData,
-        handleChange,
-        searchResults,
+        uniFormData,
+        handleChangeCountry,
+        handleChangeUni,
+        searchResultsCountry,
+        searchResultsUni,
       }}
     >
       {children}
