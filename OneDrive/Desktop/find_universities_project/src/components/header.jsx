@@ -1,7 +1,6 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { Context } from "../Context";
-import redCircle from "../assets/red_circle.png";
 
 export default function Header() {
   const { favoriteUniArray } = useContext(Context);
