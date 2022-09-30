@@ -18,10 +18,12 @@ export default function Universities() {
   }, []);
 
   function allUniversities() {
-    if (uniData.length === 0 || searchResult.length === 0) {
+    if (uniData.length === 0) {
       return (
         <h2>We've searched far and wide but haven't found any Universities</h2>
       );
+    } else if (searchResult.length === 0 && input.length > 0) {
+      return <h2>No data matching data found</h2>;
     } else if (input.length === 0) {
       return uniData.map((uni) => {
         return <University name={uni.name} website={uni.web_pages[0]} />;

@@ -22,6 +22,10 @@ header {
   background-image: linear-gradient(62deg, #fbab7e 0%, #f7ce68 100%);
 }
 
+header {
+  box-shadow: 0 4px 2px -2px gray;
+}
+
 .container,
 .mainForm {
   display: flex;
@@ -153,4 +157,15 @@ input {
   font-size: 1.2rem;
   border-radius: 0.5em;
   margin-top: 1em;
+}
+
+.uniWrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.uniWrapper form input {
+  width: 400px;
 }
