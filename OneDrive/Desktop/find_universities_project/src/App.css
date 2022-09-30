@@ -22,13 +22,15 @@ header {
   background-image: linear-gradient(62deg, #fbab7e 0%, #f7ce68 100%);
 }
 
-.container {
+.container,
+.mainForm {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-
   width: 100%;
   max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 header a {
@@ -141,4 +143,14 @@ header a:active,
 
 .university a:hover {
   scale: 1.1;
+}
+
+input {
+  font-family: inherit;
+  text-align: left;
+  padding: 0.25em;
+  border: 1px solid #404040;
+  font-size: 1.2rem;
+  border-radius: 0.5em;
+  margin-top: 1em;
 }

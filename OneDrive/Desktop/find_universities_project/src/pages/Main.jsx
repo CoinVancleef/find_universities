@@ -47,16 +47,18 @@ export default function Main() {
 
   return (
     <div className="wrapper">
-      <Form
-        placeholder="Search for a country"
-        data={countryFormData}
-        handleChange={handleChangeCountry}
-      />
-      <Form
-        placeholder="Search for universities"
-        data={uniFormData}
-        handleChange={handleChangeUni}
-      />
+      <div className="mainForm">
+        <Form
+          placeholder="Search for a country"
+          data={countryFormData}
+          handleChange={handleChangeCountry}
+        />
+        <Form
+          placeholder="Search for universities"
+          data={uniFormData}
+          handleChange={handleChangeUni}
+        />
+      </div>
       <div className="countriesContainer">
         <div className="allCountries">{display()}</div>
       </div>
