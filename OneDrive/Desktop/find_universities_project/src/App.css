@@ -187,3 +187,9 @@ input {
   top: 17px;
   right: 17px;
 }
+
+@media (max-width: 1200px) {
+  .allCountries {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
+}
