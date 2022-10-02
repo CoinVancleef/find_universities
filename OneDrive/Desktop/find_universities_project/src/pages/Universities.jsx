@@ -9,12 +9,18 @@ export default function Universities() {
   const [uniData, setUniData] = useState([]);
   const [searchResult, setSearchResult] = useState([]);
   const [input, setInput] = useState("");
+  const [loading, setLoading] = useState(false);
+
   const searchByCountryURL = `http://universities.hipolabs.com/search?country=${countryName}`;
 
   useEffect(() => {
+    setLoading(true);
     fetch(searchByCountryURL)
       .then((res) => res.json())
-      .then((data) => setUniData(data));
+      .then((data) => {
+        setLoading(false);
+        setUniData(data);
+      });
   }, []);
 
   function allUniversities() {
@@ -51,12 +57,20 @@ export default function Universities() {
 
   return (
     <div className="uniWrapper">
-      <Form
-        placeholder={`Search for universities in ${countryName}`}
-        data={input}
-        handleChange={handleChange}
-      />
-      <div className="universitiesPage">{allUniversities()}</div>
+      {loading ? (
+        <div className="loader-container">
+          <div className="spinner"></div>
+        </div>
+      ) : (
+        <div>
+          <Form
+            placeholder={`Search for universities in ${countryName}`}
+            data={input}
+            handleChange={handleChange}
+          />
+          <div className="universitiesPage">{allUniversities()}</div>
+        </div>
+      )}
     </div>
   );
 }
