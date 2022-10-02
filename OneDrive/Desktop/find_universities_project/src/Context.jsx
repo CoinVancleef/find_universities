@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+import usePrevious from "./hooks/usePrevious";
+import useDidMountEffect from "./hooks/useDidMountEffect";
 
 const Context = React.createContext();
 
@@ -10,6 +12,8 @@ function ContextProvider({ children }) {
   const [uniFormData, setUniFormData] = useState([]);
   const [searchResultsCountry, setSearchResultsCountry] = useState([]);
   const [searchResultsUni, setSearchResultsUni] = useState([]);
+  const [wasRead, setWasRead] = useState(false);
+
   const countriesURL = "https://restcountries.com/v2/all?fields=name,flags";
 
   useEffect(() => {
@@ -77,7 +81,17 @@ function ContextProvider({ children }) {
     }
   }, [uniFormData]);
 
-  console.log(uniFormData);
+  function read() {
+    setWasRead(true);
+  }
+
+  const prevUniLength = usePrevious(favoriteUniArray.length);
+
+  useDidMountEffect(() => {
+    if (prevUniLength < favoriteUniArray.length) {
+      setWasRead(false);
+    }
+  }, [favoriteUniArray]);
 
   return (
     <Context.Provider
@@ -91,6 +105,8 @@ function ContextProvider({ children }) {
         handleChangeUni,
         searchResultsCountry,
         searchResultsUni,
+        wasRead,
+        read,
       }}
     >
       {children}
