@@ -197,6 +197,18 @@ input {
   margin: 1em auto;
 }
 
+.error {
+  text-align: center;
+  grid-column: 2/-2;
+}
+
+.noItems {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+
 .loader-container {
   width: 100%;
   height: 2000px;

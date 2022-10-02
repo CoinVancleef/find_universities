@@ -11,6 +11,12 @@ export default function Universities() {
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
 
+  const errorMessage = (
+    <h1 className="error">
+      We've searched far and wide but haven't found any universities 😭
+    </h1>
+  );
+
   const searchByCountryURL = `http://universities.hipolabs.com/search?country=${countryName}`;
 
   useEffect(() => {
@@ -25,11 +31,9 @@ export default function Universities() {
 
   function allUniversities() {
     if (uniData.length === 0) {
-      return (
-        <h2>We've searched far and wide but haven't found any Universities</h2>
-      );
+      return errorMessage;
     } else if (searchResult.length === 0 && input.length > 0) {
-      return <h2>No data matching data found</h2>;
+      return <h2>No matching universities found</h2>;
     } else if (input.length === 0) {
       return uniData.map((uni) => {
         return <University name={uni.name} website={uni.web_pages[0]} />;
@@ -63,11 +67,13 @@ export default function Universities() {
         </div>
       ) : (
         <div>
-          <Form
-            placeholder={`Search for universities in ${countryName}`}
-            data={input}
-            handleChange={handleChange}
-          />
+          {uniData.length > 0 && (
+            <Form
+              placeholder={`Search for universities in ${countryName}`}
+              data={input}
+              handleChange={handleChange}
+            />
+          )}
           <div className="universitiesPage">{allUniversities()}</div>
         </div>
       )}
