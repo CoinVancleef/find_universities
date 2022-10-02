@@ -37,11 +37,11 @@ export default function Main() {
 
   function display() {
     if (searchResultsUni.length === 0 && searchResultsCountry.length === 0) {
-      return allCountries;
+      return <div className="allCountries">{allCountries}</div>;
     } else if (searchResultsCountry.length > 0) {
-      return searchedCountries;
+      return <div className="allCountries">{searchedCountries}</div>;
     } else {
-      return searchUni;
+      return <div className="universitiesPage">{searchUni}</div>;
     }
   }
 
@@ -59,9 +59,7 @@ export default function Main() {
           handleChange={handleChangeUni}
         />
       </div>
-      <div className="countriesContainer">
-        <div className="allCountries">{display()}</div>
-      </div>
+      <div className="countriesContainer">{display()}</div>
     </div>
   );
 }

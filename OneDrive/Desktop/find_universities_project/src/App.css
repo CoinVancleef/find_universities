@@ -188,8 +188,36 @@ input {
   right: 17px;
 }
 
-@media (max-width: 1200px) {
+.favoritedPage {
+  max-width: 1200px;
+  margin: 1em auto;
+}
+
+@media (max-width: 1250px) {
   .allCountries {
     grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
+  .universitiesPage,
+  .favoritedPage {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 950px) {
+  .allCountries {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+@media (max-width: 800px) {
+  .universitiesPage,
+  .favoritedPage {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 700px) {
+  .allCountries {
+    grid-template-columns: 1fr 1fr;
   }
 }
