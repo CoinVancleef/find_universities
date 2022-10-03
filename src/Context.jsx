@@ -100,7 +100,7 @@ function ContextProvider({ children }) {
   const localData = JSON.parse(localStorage.getItem("universities"));
 
   useEffect(() => {
-    if (favoriteUniArray.length === 0 && localData.length > 0) {
+    if (favoriteUniArray.length === 0 && localData) {
       setFavoriteUniArray(localData);
     }
   }, []);
