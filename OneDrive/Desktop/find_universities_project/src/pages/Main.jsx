@@ -51,12 +51,12 @@ export default function Main() {
     <div className="wrapper">
       <div className="mainForm">
         <Form
-          placeholder="Search for a country"
+          placeholder="Search for a country 🌎"
           data={countryFormData}
           handleChange={handleChangeCountry}
         />
         <Form
-          placeholder="Search for universities"
+          placeholder="Search for universities 🏫"
           data={uniFormData}
           handleChange={handleChangeUni}
         />

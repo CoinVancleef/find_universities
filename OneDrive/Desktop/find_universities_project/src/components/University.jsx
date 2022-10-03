@@ -16,7 +16,7 @@ export default function University({ name, website }) {
           onClick={() => addToFavorites({ name, website })}
           onMouseEnter={() => setHovered(true)}
           onMouseLeave={() => setHovered(false)}
-          src={hovered ? checkCircleFilled : checkCircle}
+          src={checkCircleFilled}
           alt="check circle"
         />
       );
