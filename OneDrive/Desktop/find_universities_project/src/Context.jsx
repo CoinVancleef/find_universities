@@ -93,6 +93,12 @@ function ContextProvider({ children }) {
     }
   }, [favoriteUniArray]);
 
+  useDidMountEffect(() => {
+    localStorage.setItem("universities", JSON.stringify(favoriteUniArray));
+  }, [favoriteUniArray]);
+
+  const localData = JSON.parse(localStorage.getItem("universities"));
+
   return (
     <Context.Provider
       value={{
@@ -107,6 +113,7 @@ function ContextProvider({ children }) {
         searchResultsUni,
         wasRead,
         read,
+        localData,
       }}
     >
       {children}

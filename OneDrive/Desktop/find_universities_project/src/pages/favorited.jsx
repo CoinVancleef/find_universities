@@ -3,7 +3,7 @@ import AddedUniversity from "../components/AddedUniversity";
 import { Context } from "../Context";
 
 export default function Favorited() {
-  const { favoriteUniArray } = useContext(Context);
+  const { favoriteUniArray, localData } = useContext(Context);
 
   const favoritedUnis = favoriteUniArray.map((uni) => (
     <AddedUniversity name={uni.name} website={uni.website} />
@@ -24,10 +24,16 @@ export default function Favorited() {
   function renderFavorites() {
     if (loadingCondition) {
       return <div className="favoritedPage">{favoritedUnis}</div>;
+    } else if (localData.length > 0) {
+      return localData.map((uni) => (
+        <AddedUniversity key={uni.name} name={uni.name} website={uni.website} />
+      ));
     } else {
       return noItems;
     }
   }
+
+  console.log(localData);
 
   return renderFavorites();
 }

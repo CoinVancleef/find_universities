@@ -17,7 +17,7 @@ export default function Main() {
   } = useContext(Context);
 
   const allCountries = updatedCountriesData.map((country) => (
-    <Link to={`/countries/${country.name}`}>
+    <Link to={`/countries/${country.name}`} key={country.flags.svg}>
       <Country countryName={country.name} img={country.flags.svg} />
     </Link>
   ));
@@ -29,7 +29,9 @@ export default function Main() {
   ));
 
   const searchedUniversities = searchResultsUni.map((uni) => {
-    return <University name={uni.name} website={uni.web_pages[0]} />;
+    return (
+      <University key={uni.name} name={uni.name} website={uni.web_pages[0]} />
+    );
   });
 
   const searchUni =
