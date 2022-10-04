@@ -12,7 +12,7 @@ function App() {
     <div>
       <Header />
       <Routes>
-        <Route exact path="/" element={<Countries />} />
+        <Route exact path="/find_universities" element={<Countries />} />
         <Route path="/favorited" element={<Favorited />} />
         <Route path="/countries/:countryName" element={<Universities />} />
       </Routes>

@@ -211,6 +211,10 @@ input {
   justify-content: flex-start;
 }
 
+.noItems a {
+  text-decoration: underline;
+}
+
 .schoolIcon,
 .countriesIcon {
   width: 40px;

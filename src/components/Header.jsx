@@ -8,7 +8,7 @@ export default function Header() {
   return (
     <header>
       <div className="container">
-        <Link to="/">
+        <Link to="/find_universities">
           <h3>Find your University!</h3>
         </Link>
         <Link className="fav" to="/favorited" onClick={() => read()}>
