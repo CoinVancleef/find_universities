@@ -5,3 +5,4 @@ so massive thanks to them for making those resources free to use.
 
 On this website you can search for countries and universities in those countries, add and store universities in favorites.
 Thanks for checking out my project!
+Hosted via github pages: https://coinvancleef.github.io/find_universities
