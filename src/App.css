@@ -8,6 +8,7 @@ a:link {
 
 body {
   margin: 0;
+  margin-bottom: 20px;
   font-family: "Montserrat", sans-serif;
   font-size: 1rem;
   color: #404040;
@@ -270,5 +271,31 @@ input {
 @media (max-width: 700px) {
   .allCountries {
     grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .allCountries {
+    grid-template-columns: 1fr;
+    align-content: center;
+  }
+  .country {
+    width: 250px;
+  }
+  .noItems {
+    padding: 1em;
+  }
+  .mainForm {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+@media (max-width: 410px) {
+  .university {
+    width: 300px;
+  }
+  .uniWrapper form input {
+    width: 300px;
   }
 }
