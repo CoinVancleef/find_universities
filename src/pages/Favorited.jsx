@@ -1,9 +1,10 @@
 import React, { useContext } from "react";
 import AddedUniversity from "../components/AddedUniversity";
 import { Context } from "../Context";
+import ScrollToUp from "../components/ScrollToTop";
 
 export default function Favorited() {
-  const { favoriteUniArray } = useContext(Context);
+  const { favoriteUniArray, removeAll } = useContext(Context);
 
   const favoritedUnis = favoriteUniArray.map((uni) => (
     <AddedUniversity key={uni.name} name={uni.name} website={uni.website} />
@@ -29,7 +30,15 @@ export default function Favorited() {
     }
   }
 
-  console.log(favoriteUniArray);
-
-  return renderFavorites();
+  return (
+    <>
+      {renderFavorites()}
+      <ScrollToUp />
+      {favoriteUniArray.length > 1 && (
+        <button className="remove-all" onClick={() => removeAll()}>
+          Remove All
+        </button>
+      )}
+    </>
+  );
 }

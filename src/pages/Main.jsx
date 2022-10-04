@@ -4,6 +4,7 @@ import { Context } from "../Context";
 import { Link } from "react-router-dom";
 import Form from "../components/Form";
 import University from "../components/University";
+import ScrollToUp from "../components/ScrollToTop";
 
 export default function Main() {
   const {
@@ -62,6 +63,7 @@ export default function Main() {
         />
       </div>
       <div className="countriesContainer">{display()}</div>
+      <ScrollToUp />
     </div>
   );
 }

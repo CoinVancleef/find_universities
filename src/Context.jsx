@@ -111,6 +111,10 @@ function ContextProvider({ children }) {
     }
   }, []);
 
+  function removeAll() {
+    setFavoriteUniArray([]);
+  }
+
   return (
     <Context.Provider
       value={{
@@ -127,6 +131,7 @@ function ContextProvider({ children }) {
         read,
         localData,
         universitiesURL,
+        removeAll,
       }}
     >
       {children}

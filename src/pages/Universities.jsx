@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import University from "../components/University";
 import { Context } from "../Context";
 import Form from "../components/Form";
+import ScrollToUp from "../components/ScrollToTop";
 
 export default function Universities() {
   const { countryName } = useParams();
@@ -77,6 +78,7 @@ export default function Universities() {
           <div className="universitiesPage">{allUniversities()}</div>
         </div>
       )}
+      <ScrollToUp />
     </div>
   );
 }
