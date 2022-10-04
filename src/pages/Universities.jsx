@@ -11,21 +11,21 @@ export default function Universities() {
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
 
+  const { universitiesURL } = useContext(Context);
+
   const errorMessage = (
     <h1 className="error">
       We've searched far and wide but haven't found any universities 😭
     </h1>
   );
 
-  const searchByCountryURL = `http://universities.hipolabs.com/search?country=${countryName}`;
-
   useEffect(() => {
     setLoading(true);
-    fetch(searchByCountryURL)
+    fetch(universitiesURL)
       .then((res) => res.json())
       .then((data) => {
         setLoading(false);
-        setUniData(data);
+        setUniData(data.filter((uni) => uni.country === countryName));
       });
   }, []);
 

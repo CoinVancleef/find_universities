@@ -15,6 +15,8 @@ function ContextProvider({ children }) {
   const [wasRead, setWasRead] = useState(false);
 
   const countriesURL = "https://restcountries.com/v2/all?fields=name,flags";
+  const universitiesURL =
+    "https://raw.githubusercontent.com/Hipo/university-domains-list/master/world_universities_and_domains.json";
 
   useEffect(() => {
     fetch(countriesURL)
@@ -75,9 +77,13 @@ function ContextProvider({ children }) {
 
   useEffect(() => {
     if (uniFormData.length > 2) {
-      fetch(`http://universities.hipolabs.com/search?name=${uniFormData}`)
+      fetch(universitiesURL)
         .then((res) => res.json())
-        .then((data) => setSearchResultsUni(data));
+        .then((data) =>
+          setSearchResultsUni(
+            data.filter((uni) => uni.name.toLowerCase().includes(uniFormData))
+          )
+        );
     }
   }, [uniFormData]);
 
@@ -120,6 +126,7 @@ function ContextProvider({ children }) {
         wasRead,
         read,
         localData,
+        universitiesURL,
       }}
     >
       {children}
